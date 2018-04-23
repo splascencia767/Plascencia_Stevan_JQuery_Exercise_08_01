@@ -5,6 +5,32 @@
   <title>HPlus Sport</title>
   <link rel="stylesheet" href="css/style.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script type="text/javascript" src="jquery-3.0.0.js"></script>
+  <script type="text/javascript">
+      $("document").ready(function() {
+         var vitamin = $("li[data-prod=^V]");
+         var mineralwater = $("li[data-prod=^MW]")
+         var proteinbar = $("li[data-prod=^PB]")
+          $("h2[data-type=vitamin]").css("background-color","green");
+          $("h2[data-type=mineralwater]").css("background-color","blue");
+          $("h2[data-type=proteinbar]").css("background-color","purple");
+          $("#products .container").after("<form id='chckBox'/>");
+          $("#chckBox").append("Show: <input type='checkbox' id='vitamins' class='checkBox'/> Vitamins ");
+          $("#chckBox").append(" <input type='checkbox' id='mineralwater' class='checkBox'/> Mineral Water ");
+          $("#chckBox").append(" <input type='checkbox' id='proteinbar' class='checkBox'/> Protein Bars ");
+          $(".checkbox").onchange(function(){
+            $(".product-list li").detach();
+          });
+      });
+      function replacementFn() {
+        if ($(this).text().indexOf("1") != -1) {
+            return "<p>This is paragraph uno</p>";
+        }
+        else {
+            return this.outerHTML;
+        }
+    }
+  </script>
 </head>
 <body>
 
@@ -215,6 +241,5 @@
   <p class="legal">H+ Sport is a fictitious brand created by lynda.com solely for the purpose of training. All products and people associated with H+ Sport are also fictitious. Any resemblance to real brands, products, or people is purely coincidental. Information provided about the product is also fictitious and should not be construed to be representative of actual products on the market in a similar product category.</p>
 </div><!-- container -->
 </footer><!-- footer -->
-
 </body>
 </html>
